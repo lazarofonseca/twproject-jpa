@@ -34,4 +34,6 @@ public class EmployeeForm {
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate resignationDate;
 
+    private AddressForm address;
+
 }

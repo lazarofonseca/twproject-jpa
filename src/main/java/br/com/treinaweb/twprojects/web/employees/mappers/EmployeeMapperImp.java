@@ -1,5 +1,6 @@
 package br.com.treinaweb.twprojects.web.employees.mappers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import br.com.treinaweb.twprojects.core.models.Employee;
@@ -9,7 +10,11 @@ import br.com.treinaweb.twprojects.web.employees.dtos.EmployeeForm;
 import br.com.treinaweb.twprojects.web.employees.dtos.EmployeeListItem;
 
 @Component
+@RequiredArgsConstructor
 public class EmployeeMapperImp implements EmployeeMapper{
+
+
+    private final AddressMapper addressMapper;
 
 
     @Override
@@ -23,6 +28,7 @@ public class EmployeeMapperImp implements EmployeeMapper{
                .birthDate(employeeForm.getBirthDate())
                .hireDate(employeeForm.getHireDate())
                .resignationDate(employeeForm.getResignationDate())
+               .address(addressMapper.toAddres(employeeForm.getAddress()))
                .build();
     }
 
@@ -36,6 +42,7 @@ public class EmployeeMapperImp implements EmployeeMapper{
                 .birthDate(employee.getBirthDate())
                 .hireDate(employee.getHireDate())
                 .resignationDate(employee.getResignationDate())
+                .address(addressMapper.toAddresForm(employee.getAddress()))
                 .build();
     }
 
@@ -61,6 +68,7 @@ public class EmployeeMapperImp implements EmployeeMapper{
                 .birthDate(employee.getBirthDate())
                 .hireDate(employee.getHireDate())
                 .resignationDate(employee.getResignationDate())
+                .address(addressMapper.formatAddress(employee.getAddress()))
                 .build();
     }
 

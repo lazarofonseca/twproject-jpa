@@ -2,11 +2,7 @@ package br.com.treinaweb.twprojects.core.models;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -45,6 +41,9 @@ public class Employee {
 
     @Column(nullable = true)
     private LocalDate resignationDate;
+
+    @OneToOne(optional = false, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private Address address;
 
 
 }

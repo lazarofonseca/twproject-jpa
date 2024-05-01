@@ -33,4 +33,6 @@ public class EmployeeDetails {
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate resignationDate;
 
+    private String address;
+
 }
